@@ -1,0 +1,5 @@
+%h1 Import purchases
+
+= form_tag purchases_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag 'Import'

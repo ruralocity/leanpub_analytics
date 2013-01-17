@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  leanpub_id: MyString
+  total_paid: 1.5
+  royalty: 1.5
+  bundle_slug: MyString
+  purchased_on: 2013-01-05
+  paid_on: 2013-01-05
+  coupon_code: MyString
+  coupon_note: MyString
+  email: MyString
+
+two:
+  leanpub_id: MyString
+  total_paid: 1.5
+  royalty: 1.5
+  bundle_slug: MyString
+  purchased_on: 2013-01-05
+  paid_on: 2013-01-05
+  coupon_code: MyString
+  coupon_note: MyString
+  email: MyString
