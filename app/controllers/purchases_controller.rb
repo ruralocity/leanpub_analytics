@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
 
   def index
     @purchases = Purchase.
-      select("STRFTIME('%Y-%m', purchased_on) AS purchased_month, COUNT(id) AS total_sales, SUM(royalty) AS royalty").
+      select("STRFTIME('%Y-%m', purchased_on) AS purchased_month, COUNT(id) AS total_sales, SUM(royalty) AS royalty, created_at").
       order("purchased_on ASC").
       group("STRFTIME('%Y-%m', purchased_on)")
 
@@ -32,8 +32,8 @@ class PurchasesController < ApplicationController
     @average_chart = LazyHighCharts::HighChart.new('graph', style: '') do |f|
       f.options[:chart][:defaultSeriesType] = 'line'
       f.legend(enabled: false)
-      f.series(name: 'Price', data: @averages)
-      f.title(text: 'Average price by month')
+      f.series(name: 'Royalty', data: @averages)
+      f.title(text: 'Average royalty by month')
       f.xAxis(type: :datetime, categories: @dates)
       f.yAxis(min: 0, title: { text: "Sales"} )
     end

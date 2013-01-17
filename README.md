@@ -6,7 +6,7 @@ Here's what it graphs:
 
 - Total royalties per month
 - Total sales per month
-- Average price paid per book per month
+- Average royalty paid per book per month
 
 Some issues to be aware of:
 
