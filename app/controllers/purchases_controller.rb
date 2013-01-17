@@ -35,7 +35,7 @@ class PurchasesController < ApplicationController
       f.series(name: 'Royalty', data: @averages)
       f.title(text: 'Average royalty by month')
       f.xAxis(type: :datetime, categories: @dates)
-      f.yAxis(min: 0, title: { text: "Sales"} )
+      f.yAxis(min: 0, title: { text: "Royalty per book"} )
     end
   end
 
