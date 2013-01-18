@@ -1,0 +1,9 @@
+%h1= "Leanpub Sales Analytics for #{params[:id]}"
+
+= link_to 'Main', root_url
+
+= "(Data last added #{@purchases.last.created_at})"
+
+.chart= high_chart('royalties', @royalties_chart)
+.chart= high_chart('sales', @sales_chart)
+.chart= high_chart('averages', @average_chart)
