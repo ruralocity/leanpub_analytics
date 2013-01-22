@@ -11,6 +11,35 @@ class PurchasesController < ApplicationController
     @sales = @purchases.map(&:total_sales)
     @averages = @purchases.map {|p| p.royalty/p.total_sales }
 
+    @incremented_royalties = @royalties.incremented_sums
+    @incremented_sales = @sales.incremented_sums
+
+    @incremented_royalties_chart = LazyHighCharts::HighChart.new('graph', style: '') do |f|
+      f.options[:chart][:defaultSeriesType] = 'line'
+      f.legend(enabled: false)
+      f.series(name: 'Total royalties', data: @incremented_royalties)
+      f.title(text: 'Royalties over time')
+      f.xAxis(type: :datetime, categories: @dates)
+      f.yAxis(min: 0, title: { text: "Total royalties"} )
+      f.options[:plotOptions][:line] = {
+        cursor: 'pointer',
+        point: { events: { click: %|function() { location.href = '/purchases/' + this.category }|.js_code } }
+      }
+    end
+
+    @incremented_sales_chart = LazyHighCharts::HighChart.new('graph', style: '') do |f|
+      f.options[:chart][:defaultSeriesType] = 'line'
+      f.legend(enabled: false)
+      f.series(name: 'Total sales', data: @incremented_sales)
+      f.title(text: 'Sales over time')
+      f.xAxis(type: :datetime, categories: @dates)
+      f.yAxis(min: 0, title: { text: "Total sales"} )
+      f.options[:plotOptions][:line] = {
+        cursor: 'pointer',
+        point: { events: { click: %|function() { location.href = '/purchases/' + this.category }|.js_code } }
+      }
+    end
+
     @royalties_chart = LazyHighCharts::HighChart.new('graph', style: '') do |f|
       f.options[:chart][:defaultSeriesType] = 'column'
       f.legend(enabled: false)

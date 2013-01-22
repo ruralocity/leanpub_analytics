@@ -3,6 +3,8 @@
 = link_to 'Import data', new_purchase_path
 = "(Data last added #{@purchases.last.created_at})"
 
+.chart= high_chart('incremented_royalties', @incremented_royalties_chart)
+.chart= high_chart('incremented_sales', @incremented_sales_chart)
 .chart= high_chart('royalties', @royalties_chart)
 .chart= high_chart('sales', @sales_chart)
 .chart= high_chart('averages', @average_chart)
