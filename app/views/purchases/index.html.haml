@@ -1,7 +1,7 @@
 %h1 Leanpub Sales Analytics
 
 = link_to 'Import data', new_purchase_path
-= "(Data last added #{@purchases.last.created_at})"
+= "(Data last added #{Purchase.most_recent})"
 
 .chart= high_chart('incremented_royalties', @incremented_royalties_chart)
 .chart= high_chart('incremented_sales', @incremented_sales_chart)
